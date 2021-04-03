@@ -19,5 +19,40 @@ with open(election_csv, 'r') as csvfile:
 
         votes.append(row[2])
 
+total_votes = len(votes)
+
 candidates = []
 [candidates.append(x) for x in votes if x not in candidates]
+
+first_candidate_votes = 0
+second_candidate_votes = 0
+third_candidate_votes = 0
+fourth_candidate_votes = 0
+
+for vote in votes:
+
+    if vote == candidates[0]:
+
+        first_candidate_votes += 1
+
+    elif vote == candidates[1]:
+
+        second_candidate_votes += 1
+
+    elif vote == candidates[2]:
+
+        third_candidate_votes += 1
+
+    else:
+
+        fourth_candidate_votes += 1
+
+
+print("Election Results")
+print("-----------------------")
+print(f"Total Votes: {total_votes}")
+print("-----------------------")
+print(f"{candidates[0]}: {first_candidate_votes}")
+print(f"{candidates[1]}: {second_candidate_votes}")
+print(f"{candidates[2]}: {third_candidate_votes}")
+print(f"{candidates[3]}: {fourth_candidate_votes}")
