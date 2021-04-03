@@ -55,3 +55,17 @@ print(f"Total: ${total_amount}")
 print(f"Average Change: ${round(average_change, 2)}")
 print(f"Greatest Increase in Profits: {profit_max_date} (${profit_max})")
 print(f"Greatest Decrease in Profits: {profit_min_date} (${profit_min})")
+
+
+analysis_output = os.path.join("Analysis", "analysis_results.txt")
+
+with open(analysis_output, 'w') as txtfile:
+
+    print("Financial Analysis", file=txtfile)
+    print("-------------------------", file=txtfile)
+    print(f"Total Months: {total_months}", file=txtfile)
+    print(f"Total: ${total_amount}", file=txtfile)
+    print(f"Average Change: ${round(average_change, 2)}", file=txtfile)
+    print(f"Greatest Increase in Profits: {profit_max_date} (${profit_max})", file=txtfile)
+    print(f"Greatest Decrease in Profits: {profit_min_date} (${profit_min})", file=txtfile)
+
