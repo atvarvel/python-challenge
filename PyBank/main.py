@@ -1,20 +1,25 @@
 import os
 import csv
 
-budget_data = os.path.join('Resources', 'budget_data.csv')
+budget_csv = os.path.join('Resources', 'budget_data.csv')
 
-with open(budget_data, 'r') as csvfile:
+date = []
+profit_losses = []
+
+with open(budget_csv, 'r') as csvfile:
 
     csvreader = csv.reader(csvfile, delimiter=',')
 
     header = next(csvreader)
 
-    profit_losses = int(csvreader[1])
+    for row in csvreader:
 
-    total_amount = sum(profit_losses)
+        date.append(row[0])
+        profit_losses.append(int(row[1]))
 
-    total_months = len(list(csvreader))
+total_months = len(date)
 
-    print(f"Total Months: {total_months}")
+total_amount = sum(profit_losses)
 
-    print(f"Total: ${total_amount}")
+print(f"Total Months: {total_months}")
+print(f"Total: ${total_amount}")
