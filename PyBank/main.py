@@ -34,8 +34,8 @@ total_amount = sum(profit_losses)
 # This establishes the index values and the element value for each item in the list
 for index, elem in enumerate(profit_losses):
 
-    # If the next index in the list is less than the length of the list AND the previous index is greater than zero...
-    if (index+1 < len(profit_losses) and index - 1 >= 0):
+    # If the index in the list is less than the length of the list AND the previous index is greater than zero...
+    if (index < len(profit_losses) and index - 1 >= 0):
 
         # Assign the values of the previous element and the current element to these variables
         prev_elem = float(profit_losses[index-1])
@@ -50,20 +50,20 @@ for index, elem in enumerate(profit_losses):
 # Calucate the average of the changes in profit/losses
 average_change = sum(change) / len(change)
 
-# Find the maximum value in the profit/losses list
-profit_max = max(profit_losses)
+# Find the maximum value in the change list
+profit_max = max(change)
 
 # Find the index of the profit/losses max
-profit_max_location = profit_losses.index(profit_max)
+profit_max_location = change.index(profit_max)
 
 # Use the profit/losses max index to find the corresponding date in the date list
 profit_max_date = date[profit_max_location]
 
-# Find the minimum value in the profit/losses list
-profit_min = min(profit_losses)
+# Find the minimum value in the change list
+profit_min = min(change)
 
 # Find the index of the profit/losses min
-profit_min_location = profit_losses.index(profit_min)
+profit_min_location = change.index(profit_min)
 
 # Use the profit/losses min index to find the corresponding date in the date list
 profit_min_date = date[profit_min_location]
@@ -92,4 +92,3 @@ with open(analysis_output, 'w') as txtfile:
     print(f"Average Change: ${round(average_change, 2)}", file=txtfile)
     print(f"Greatest Increase in Profits: {profit_max_date} (${profit_max})", file=txtfile)
     print(f"Greatest Decrease in Profits: {profit_min_date} (${profit_min})", file=txtfile)
-
